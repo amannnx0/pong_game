@@ -23,9 +23,22 @@ screen.onkey(left_hitter.go_down,"s")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.3)
+    time.sleep(0.2)
     screen.update()
     ball.move()
+
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce_y()
+
+    if ball.distance(right_hitter) < 50 and ball.xcor() > 320 or ball.distance(left_hitter)<50 and ball.xcor()<-320:
+        ball.bounce_x()
+
+
+    if ball.xcor() > 380:
+        ball.reset_pos()
+
+    if ball.xcor() < -350:
+        ball.reset_pos()
 
 
 
